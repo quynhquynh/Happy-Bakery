@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/icon.png">
+    <title>Happy Bakery</title>
+
+   
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+   
+    <link href="css/happy.css" rel="stylesheet">
+
+   
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <div class="brand">Happy Bakery</div>
+    <div class="address-bar">Vanha Maantie 19 | ESPOO 02610 | +358 412345678</div>
+
+   
+    <nav class="navbar navbar-default">
+        <div class="container">
+          
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#happy-bakery">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+           
+                <a class="navbar-brand" href="index.html">Happy Bakery</a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="happy-bakery">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cupcakes
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="wedding.html">Weddings</a></li>
+                            <li><a href="cutie.html">Cutie Cutes</a></li>
+                        </ul>
+                     </li>
+                    <li class="active">
+                        <a href="donuts.html">Donuts</a>
+                    </li>
+                    <li>
+                        <a href="order.html">Order now</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+    </nav>
+    <div class="container">
+
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search your Donuts">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type ="button">Go<span class="glyphicon glyphicon-send"></span></button>
+                    </span>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="box">
+                <h5 class="text-lowercase text-center"><strong>All donuts are 3 euros/each</strong></h5>
+                <div class="col-md-4">
+                    <figure>
+                        <img class="img-responsive img-circle" src="img/another-caramel.jpg" alt="caramel">
+                        <figcaption class="text-center">Caramel</figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-4">
+                    <figure>
+                        <img class="img-responsive img-circle" src="img/choco-donut.jpg" alt="Chocolate">
+                        <figcaption class="text-center">Chocolate</figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-4">
+                    <figure>
+                        <img class="img-responsive img-circle" src="img/caramel-donut.jpg" alt="caramel">
+                        <figcaption class="text-center">Original Caramel</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <div class="carousel slide" id="featured">
+                        <ol class="carousel-indicators">
+                            <li data-target="#featured" data-slide-to="0" class="active"></li>
+                            <li data-target="#featured" data-slide-to="1"></li>
+                            <li data-target="#featured" data-slide-to="2"></li>
+                        </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="img-responsive img-full" src="img/carousel-a.jpg" alt="a">
+                                </div>
+                                <div class="item">
+                                    <img class="img-responsive img-full" src="img/donuts-more.jpg" alt="b">
+                                </div>
+                                <div class="item">
+                                    <img class="img-responsive img-full" src="img/donuts.jpg" alt="c">
+                                </div>
+                            </div>
+                        <a class="left carousel-control" href="#featured" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                        <a class="right carousel-control" href="#featured" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <br>
+                    <a href="https://www.facebook.com/cupcakeforher">
+                        <img width="30" alt="Facebook" src="img/facebook.gif">
+                        </a>
+                        <a href="https://twitter.com/cupcakeforher">
+                        <img width="30" alt="Twitter" src="img/twitter.gif">
+                    </a>
+                   &copy; <i id="copy-right">Happy Bakery</i> 2016
+                   <br>
+                   <br>
+                   <br>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            
+
+
+
+      
+
+    <script src="js/jquery.js"></script>
+
+    
+    <script src="js/bootstrap.min.js"></script>  
+   <script>
+   $('.carousel').carousel({
+    interval: 4000
+   })
+    </script>
+
+</body>
+</html>
