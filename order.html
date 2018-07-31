@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,155 +11,158 @@
     <link rel="icon" href="img/icon.png">
     <title>Happy Bakery</title>
 
-  
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-   
+
     <link href="css/happy.css" rel="stylesheet">
 
-   
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+        rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic"
+        rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
-<script> 
+    <script>
 
-    
-// Function allow user to drop item to the field.
 
-    function allowDrop(event){
-        event.preventDefault();
-        console.log("allowDrop");
-    }
+        // Function allow user to drop item to the field.
 
-    // Function allow user to drag and drop item. 
-
-    function drag(event){
-        event.dataTransfer.setData("text", event.target.innerHTML);
-    }
-
-    function drop(event){
-        event.preventDefault();
-        var product = event.dataTransfer.getData("text");
-        event.target.value = product;
-        console.log("drop");
-    }
-
-    // Function to insert more rows and calculate the total price
-
-    function insertRows(){
-
-        // Get references to the table value 
-
-        var table = document.getElementById('shoppingList');
-
-        // For insert row
-
-        var row = table.insertRow();
-
-        // Get references to the table value 
-
-        var product = document.getElementById('inputCupcake').value;
-        var amount  = document.getElementById('inputAmount').value;
-
-        // set original value of price
-        var price =0;
-
-        // get the number value of amount
-        amount = parseInt(amount, 10);
-
-        // set default value of amount when input is invalid
-
-        if (!amount || amount <0){
-            amount=1;
+        function allowDrop(event) {
+            event.preventDefault();
+            console.log("allowDrop");
         }
 
-        // Set price of cupcakes
+        // Function allow user to drag and drop item.
 
-        if ([
-            'Chocolate wedding',
-            'Cutie Bear',
-            'White wedding'
-        ].indexOf(product) !== -1){
-            price = 10;
-
-        // Set price of donuts
-
-        } else if ([
-            'Caramel donut',
-            'Original caramel donut',
-            'Chocolate donut'
-        ].indexOf(product) !== -1){
-            price = 15;
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.innerHTML);
         }
 
-        // Calculate the price of each added row 
+        function drop(event) {
+            event.preventDefault();
+            var product = event.dataTransfer.getData("text");
+            console.log(product);
+            event.target.value = product;
 
-        price = price * amount;
+        }
 
-        // stop calculate if value of price is null
-        if (!price) return;
+        // Function to insert more rows and calculate the total price
 
-        // Insert cells to shopping list
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);0
+        function insertRows() {
 
-        // Assign the value of the cell
-        cell1.innerHTML = product;
-        cell2.innerHTML = amount;
-        cell3.innerHTML = price;
-        console.log(product);
+            // Get references to the table value
 
-        // call the element
+            var table = document.getElementById('shoppingList');
 
-        var totalElm = document.getElementById('total');
-        var total = totalElm.value || 0;
+            // For insert row
 
-        // Get the number value
-        total=parseInt(total,10);
+            var row = table.insertRow();
 
-        // Calculate the total price of the whole table
-        total += price;
+            // Get references to the table value
 
-        // set the value of the element 
-        totalElm.setAttribute('value', total);
-    }
+            var product = document.getElementById('inputCupcake').value;
+            var amount = document.getElementById('inputAmount').value;
+
+            // set original value of price
+            var price = 0;
+
+            // get the number value of amount
+            amount = parseInt(amount, 10);
+
+            // set default value of amount when input is invalid
+
+            if (!amount || amount < 0) {
+                amount = 1;
+            }
+
+            // Set price of cupcakes
+
+            if ([
+                'Chocolate wedding',
+                'Cutie Bear',
+                'White wedding'
+            ].indexOf(product) !== -1) {
+                price = 10;
+
+                // Set price of donuts
+
+            } else if ([
+                'Caramel donut',
+                'Original caramel donut',
+                'Chocolate donut'
+            ].indexOf(product) !== -1) {
+                price = 15;
+            }
+
+            // Calculate the price of each added row
+
+            price = price * amount;
+
+            // stop calculate if value of price is null
+            if (!price) return;
+
+            // Insert cells to shopping list
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2); 0
+
+            // Assign the value of the cell
+            cell1.innerHTML = product;
+            cell2.innerHTML = amount;
+            cell3.innerHTML = price;
+            console.log(product);
+
+            // call the element
+
+            var totalElm = document.getElementById('total');
+            var total = totalElm.value || 0;
+
+            // Get the number value
+            total = parseInt(total, 10);
+
+            // Calculate the total price of the whole table
+            total += price;
+
+            // set the value of the element
+            totalElm.setAttribute('value', total);
+        }
 
         // Function to delete the row in the table shoppingList
-    function deleteRows(){
-        var table = document.getElementById('shoppingList');
+        function deleteRows() {
+            var table = document.getElementById('shoppingList');
 
-        // Get the last row of the table which is the row to be deleted
-        var lastRow = table.rows[table.rows.length-1];
+            // Get the last row of the table which is the row to be deleted
+            var lastRow = table.rows[table.rows.length - 1];
 
-        // Delete the row
-        table.deleteRow(table.rows.length-1);
-        var totalElm = document.getElementById('total');
+            // Delete the row
+            table.deleteRow(table.rows.length - 1);
+            var totalElm = document.getElementById('total');
 
-        // Get the value of the last cell in the last row
-        var lastCell = lastRow.cells[lastRow.cells.length-1];
-        var price = lastCell.innerHTML;
-        price=parseInt(price,10);
+            // Get the value of the last cell in the last row
+            var lastCell = lastRow.cells[lastRow.cells.length - 1];
+            var price = lastCell.innerHTML;
+            price = parseInt(price, 10);
 
-        // Get the value of the total box
-        var total = totalElm.value || 0;
+            // Get the value of the total box
+            var total = totalElm.value || 0;
 
-        // Exclude the last cell's value
-        total = total-price;
+            // Exclude the last cell's value
+            total = total - price;
 
-        // Set the updated value after delete row
-        totalElm.setAttribute('value', total);
+            // Set the updated value after delete row
+            totalElm.setAttribute('value', total);
 
-    }
+        }
 
         // Add image when choosing the delivery option
         // create image
         var deliveryImg = document.createElement('img');
-        
+
         // Add specified value of the created image
 
         deliveryImg.setAttribute("src", "img/delivery.jpg");
@@ -173,7 +176,7 @@
 
         // Add specified value of the created image
 
-        shipping1.className='text-align: center';
+        shipping1.className = 'text-align: center';
         shipping1.setAttribute("src", "img/shipping1.jpg");
         shipping1.setAttribute("width", "150");
         shipping1.setAttribute("height", "150");
@@ -181,223 +184,223 @@
         deliveryImg.style.position = "relative";
         shipping1.style.position = "relative";
 
-        // Storing value for variables 
-        
+        // Storing value for variables
+
         var right = 0;
         var left = 0;
 
-    // Function to change image when choosing delivery option
+        // Function to change image when choosing delivery option
 
-    function changeImage(){
+        function changeImage() {
 
-        // Get the result value of mySelect
-        var data = document.getElementById('mySelect').value;
+            // Get the result value of mySelect
+            var data = document.getElementById('mySelect').value;
 
-        // get the width of the div box deliveryOption
-        var widthScreen = document.getElementById('deliveryOption').offsetWidth;
+            // get the width of the div box deliveryOption
+            var widthScreen = document.getElementById('deliveryOption').offsetWidth;
 
-        // get the width of the created image
-        var widthImg = deliveryImg.offsetWidth;
-        var widthImg2 = shipping1.offsetWidth;
+            // get the width of the created image
+            var widthImg = deliveryImg.offsetWidth;
+            var widthImg2 = shipping1.offsetWidth;
 
-        // Calculate the distance for the images to move
-        var travelDistanceLeft = widthScreen/2-widthImg/2; 
-        var travelDistanceRight = widthScreen/2-widthImg2/2;
-        
-        // Image will move 30px to the left when choosing normal delivery
+            // Calculate the distance for the images to move
+            var travelDistanceLeft = widthScreen / 2 - widthImg / 2;
+            var travelDistanceRight = widthScreen / 2 - widthImg2 / 2;
 
-        if (data=="normal"){
-            left+=30;
-            deliveryImg.style.margin = "0 auto";
-            if (left < travelDistanceLeft){
-                deliveryImg.style.left = left+'px'; 
-                console.log("Moved to "+left+"px");
+            // Image will move 30px to the left when choosing normal delivery
 
-                // delete appended image after each 30 px move
-                document.getElementById('tab-content').innerHTML='';
+            if (data == "normal") {
+                left += 30;
+                deliveryImg.style.margin = "0 auto";
+                if (left < travelDistanceLeft) {
+                    deliveryImg.style.left = left + 'px';
+                    console.log("Moved to " + left + "px");
 
-                // Append image during the move
-                document.getElementById('tab-content').appendChild(deliveryImg);
+                    // delete appended image after each 30 px move
+                    document.getElementById('tab-content').innerHTML = '';
+
+                    // Append image during the move
+                    document.getElementById('tab-content').appendChild(deliveryImg);
+                }
+
+                // Image will move 30px to the right of the page when choosing retail delivery
+
+            } else if (data == "retail") {
+                right += 30;
+                shipping1.style.margin = "0 auto";
+                if (right < travelDistanceRight) {
+                    shipping1.style.right = right + 'px';
+                    console.log("Moved to " + right + "px");
+
+                    // delete appended image after each 30 px move
+                    document.getElementById('tab-content').innerHTML = '';
+
+                    // Append image during the move
+                    document.getElementById('tab-content').appendChild(shipping1);
+                }
+            }
+        }
+
+        // Function storing form value and validate the values
+
+        function validateForm() {
+
+            // Get references to the form values
+
+            var customerName = document.forms.personalInfo.customerName;
+            var address = document.forms.personalInfo.address;
+            var phone = document.forms.personalInfo.phone;
+
+            // Get the number value
+            var newAddress = parseInt(address.value, 10);
+            var newPhone = parseInt(phone.value, 10);
+
+            // Function validating personal information form
+
+            function checking() {
+
+                // alert when there is no input number value in the address box
+
+                if (!newAddress || newAddress < 0) {
+
+                    // Highlight the field
+
+                    address.style.borderColor = "red";
+
+                    // Select and set mouse focus on the field
+
+                    address.select();
+                    address.focus();
+
+                    // Get reference for the field
+
+                    document.getElementById('feedback2').innerHTML = "<b>*Address lacks of number</b>";
+
+                    // Prevent submission
+                    return false;
+
+                    // Phone must have more than 10 numbers
+
+                } else if (!newPhone || newPhone.length < 10) {
+
+                    // Highlight the field
+
+                    phone.style.borderColor = "red";
+
+                    // Select and set mouse focus on the field
+
+                    phone.select();
+                    phone.focus();
+
+                    // Get reference for the field
+
+                    document.getElementById('feedback3').innerHTML = "<b>*Phone number lacks of digits</b>";
+
+                    // Prevent submission
+                    return false;
+                } else alert("submited");
             }
 
-        // Image will move 30px to the right of the page when choosing retail delivery
+            // Form will alert errors when leave blank.
+            // Ask user to fill in properly.
 
-        } else if (data=="retail"){
-            right+=30;
-            shipping1.style.margin = "0 auto";
-            if (right < travelDistanceRight){
-                shipping1.style.right = right+'px';
-                console.log("Moved to "+right+"px");
+            if (!customerName.value || !address.value || !phone.value) {
+                if (!customerName.value) {
 
-                // delete appended image after each 30 px move
-                document.getElementById('tab-content').innerHTML='';
+                    // Highlight the field
 
-                // Append image during the move
-                document.getElementById('tab-content').appendChild(shipping1);
+                    customerName.style.borderColor = "red";
+
+                    // Select and set mouse focus on the field
+
+                    customerName.select();
+                    customerName.focus();
+
+                    // Get reference for the field
+
+                    document.getElementById('feedback1').innerHTML = "<b>*Fill in properly</b>";
+                    alert("wrong");
+                    console.log("wrong");
+                    return false;
+
+                    // Alert user to fill in properly
+
+                } else if (!address.value) {
+
+                    // Highlight the field
+
+                    address.style.borderColor = "red";
+
+                    // Select and set mouse focus on the field
+
+                    address.select();
+                    address.focus();
+
+                    // Get reference for the field
+
+                    document.getElementById('feedback2').innerHTML = "<b>*Fill in properly</b>";
+                    // Alert pop up when the field is blank.
+
+                    alert("wrong");
+                    console.log("wrong");
+                    return false;
+
+                    // Alert user to fill in properly
+
+                } else if (!phone.value) {
+
+                    // Highlight the field
+
+                    phone.style.borderColor = "red";
+
+                    // Select and set mouse focus on the field
+
+                    phone.select();
+                    phone.focus();
+
+                    // Get reference for the field
+
+                    document.getElementById('feedback3').innerHTML = "<b>*Fill in properly</b>";
+                    return false;
+                }
+            } else {
+
+                // Return result of the function checking
+
+                return checking();
             }
         }
-    }
 
-    // Function storing form value and validate the values
+        // Create extra field when click check box
 
-    function validateForm(){
+        function showExtraField() {
 
-        // Get references to the form values
+            // Get references for the value
 
-        var customerName = document.forms.personalInfo.customerName;
-        var address = document.forms.personalInfo.address;
-        var phone = document.forms.personalInfo.phone;
+            var extraFieldset = document.getElementById('extraField');
+            var checkbox = document.getElementById('personalInfo').checked;
 
-        // Get the number value
-        var newAddress = parseInt(address.value, 10);
-        var newPhone = parseInt(phone.value, 10);
+            // Disappeared when unchecked the box
+            if (!checkbox) {
+                extraFieldset.style.display = "none";
 
-        // Function validating personal information form 
+                // Condition if click the check box, it will apear
 
-        function checking(){
-
-            // alert when there is no input number value in the address box
-
-            if (!newAddress || newAddress <0){
-
-                // Highlight the field 
-
-                address.style.borderColor = "red";
-
-                // Select and set mouse focus on the field
-
-                address.select();
-                address.focus();
-
-                // Get reference for the field 
-
-                document.getElementById('feedback2').innerHTML="<b>*Address lacks of number</b>";
-
-                // Prevent submission
-                return false;
-
-        // Phone must have more than 10 numbers
-
-            } else if (!newPhone || newPhone.length < 10){
-
-                // Highlight the field 
-
-                phone.style.borderColor = "red";
-
-                // Select and set mouse focus on the field
-
-                phone.select();
-                phone.focus();
-
-                // Get reference for the field 
-
-                document.getElementById('feedback3').innerHTML="<b>*Phone number lacks of digits</b>";
-
-                // Prevent submission
-                return false;
-            } else alert("submited");
-        }
-
-        // Form will alert errors when leave blank.
-        // Ask user to fill in properly.
-
-        if(!customerName.value || !address.value || !phone.value){
-            if(!customerName.value){
-
-                // Highlight the field 
-
-                customerName.style.borderColor = "red";
-
-                // Select and set mouse focus on the field
-
-                customerName.select();
-                customerName.focus();
-
-                // Get reference for the field 
-
-                document.getElementById('feedback1').innerHTML="<b>*Fill in properly</b>";
-                alert("wrong");
-                console.log("wrong");
-                return false;
-
-            // Alert user to fill in properly
-
-            } else if (!address.value){
-
-                // Highlight the field 
-
-                address.style.borderColor = "red";
-
-                // Select and set mouse focus on the field
-
-                address.select();
-                address.focus();
-
-                // Get reference for the field 
-
-                document.getElementById('feedback2').innerHTML="<b>*Fill in properly</b>";
-                // Alert pop up when the field is blank.
-
-                alert("wrong");
-                console.log("wrong");
-                return false;
-
-            // Alert user to fill in properly
-
-            } else if (!phone.value){
-
-                // Highlight the field
-
-                phone.style.borderColor = "red";
-
-                // Select and set mouse focus on the field
-
-                phone.select();
-                phone.focus();
-
-                // Get reference for the field 
-
-                document.getElementById('feedback3').innerHTML="<b>*Fill in properly</b>";
-                return false;
+            } else {
+                extraFieldset.style.display = "block";
             }
-        } else {
-
-            // Return result of the function checking
-
-            return checking();
         }
-    }
-
-    // Create extra field when click check box
-
-    function showExtraField(){
-
-    // Get references for the value
-
-        var extraFieldset = document.getElementById('extraField');
-        var checkbox = document.getElementById('personalInfo').checked;
-        
-        // Disappeared when unchecked the box 
-        if(!checkbox){
-            extraFieldset.style.display = "none";
-
-        // Condition if click the check box, it will apear
-
-        } else{
-            extraFieldset.style.display = "block";
-        }
-    }
 
 
-</script>
+    </script>
 
     <div class="brand">Happy Bakery</div>
     <div class="address-bar">Vanha Maantie 19 | ESPOO 02610 | +358 412345678</div>
 
-   
+
     <nav class="navbar navbar-default">
         <div class="container">
-            
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#happy-bakery">
                     <span class="sr-only">Toggle navigation</span>
@@ -405,22 +408,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
+
                 <a class="navbar-brand" href="index.html">Happy Bakery</a>
             </div>
-          
+
             <div class="collapse navbar-collapse" id="happy-bakery">
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="index.html">Home</a>
                     </li>
-                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cupcakes
-                        <span class="caret"></span></a>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cupcakes
+                            <span class="caret"></span>
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a href="wedding.html">Weddings</a></li>
-                            <li><a href="cutie.html">Cutie Cutes</a></li>
+                            <li>
+                                <a href="wedding.html">Weddings</a>
+                            </li>
+                            <li>
+                                <a href="cutie.html">Cutie Cutes</a>
+                            </li>
                         </ul>
-                     </li>
+                    </li>
                     <li>
                         <a href="donuts.html">Donuts</a>
                     </li>
@@ -429,9 +438,9 @@
                     </li>
                 </ul>
             </div>
-          
+
         </div>
-       
+
     </nav>
     <div class="container">
 
@@ -461,10 +470,11 @@
                         <input type="button" onclick="insertRows()" name="Insert" id="Insert" value="Insert">
                         <input type="button" onclick="deleteRows()" name="Insert" id="Delete" value="Delete">
                     </div>
-                    <label for="total">Total</label><input type="text" name="total" id="total" >
+                    <label for="total">Total</label>
+                    <input type="text" name="total" id="total">
                 </div>
                 <div class="col-lg-4 table-responsive">
-                    <table class="table table-bordered id ="tableProduct">
+                    <table class="table table-bordered id =" tableProduct ">
                         <thead>
                             <tr>
                                 <th>CUPCAKE</th>
@@ -473,220 +483,228 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td id="chocowed" draggable="true" ondragstart="drag(event)">Chocolate wedding</td>
-                                <td id="caradon" draggable="true" ondragstart="drag(event)">Caramel donut</td>
+                                <td id="chocowed " draggable="true " ondragstart="drag(event) ">Chocolate wedding</td>
+                                <td id="caradon " draggable="true " ondragstart="drag(event) ">Caramel donut</td>
                             </tr>
                             <tr>
-                                <td id="whitewed" draggable="true" ondragstart="drag(event)">White wedding</td>
-                                <td id="chocodon" draggable="true" ondragstart="drag(event)">Chocolate donut</td>
+                                <td id="whitewed " draggable="true " ondragstart="drag(event) ">White wedding</td>
+                                <td id="chocodon " draggable="true " ondragstart="drag(event) ">Chocolate donut</td>
                             </tr>
                             <tr>
-                                <td id="cube" draggable="true" ondragstart="drag(event)">Cutie Bear</td>
-                                <td id="origin" draggable="true" ondragstart="drag(event)">Original caramel donut</td>
+                                <td id="cube " draggable="true " ondragstart="drag(event) ">Cutie Bear</td>
+                                <td id="origin " draggable="true " ondragstart="drag(event) ">Original caramel donut</td>
                             </tr>
                         </tbody>
                     </table>
-                </div> 
+                </div>
             </div>
-            
-            <div class="box" id="deliveryOption">
-                <div class="col-lg-12">
+
+            <div class="box " id="deliveryOption ">
+                <div class="col-lg-12 ">
                     <hr>
-                    <h3 class="intro-text text-center">Step 1: Choose your <strong>method</strong> of delivery
+                    <h3 class="intro-text text-center ">Step 1: Choose your <strong>method</strong> of delivery
                     </h3>
                     <hr>
                 </div>
-            
-                <div class="col-lg-12">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation">
-                            <a role="tab" data-toggle="tab" href="#normalDelivery">Normal Delivery</a>
+
+                <div class="col-lg-12 ">
+                    <ul class="nav nav-tabs " role="tablist ">
+                        <li role="presentation ">
+                            <a role="tab " data-toggle="tab " href="#normalDelivery ">Normal Delivery</a>
                         </li>
-                        <li role="presentation">
-                            <a role="tab" data-toggle="tab" href="#retailShipping">Retail Shipping</a>
+                        <li role="presentation ">
+                            <a role="tab " data-toggle="tab " href="#retailShipping ">Retail Shipping</a>
                         </li>
                     </ul>
-                    <div id="tab-content">
-                        
+                    <div id="tab-content ">
+
                     </div>
-                    <h4 class="text-center">Choose Delivery</h4>
-                    <div class="dropdown text-center">
-                            <select name="mySelect" id="mySelect" onclick="setInterval(function(){changeImage();},1000);" class=dropdown-menu">
-                                <option value="normal">Normal Delivery         
-                                <option value="retail">Retail Delivery
-                           
-                            </select>
+                    <h4 class="text-center ">Choose Delivery</h4>
+                    <div class="dropdown text-center ">
+                            <select name="mySelect " id="mySelect " onclick="setInterval(function(){changeImage();},1000);
+                        " class=dropdown-menu">
+                        <option value="normal">Normal Delivery
+                            <option value="retail">Retail Delivery
+
+                                </select>
+                </div>
+                <br>
+                <br>
+                <br>
+                <label class="checkbox-inline col-lg-offset-9">
+                    <input type="checkbox" name="personalInfo" id="personalInfo" onclick="showExtraField();">Personal Information</label>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info active" role="progressbar" style="width:50%"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="col-lg-6 col-lg-offset-3">
+                <hr>
+
+                <h3 class="intro-text text-center">Step 2: Fill in your
+                    <strong>order</strong>
+                </h3>
+                <form class="form-horizontal" name="personalInfo" id="extraField" onSubmit="return validateForm();">
+                    <div class="form-group">
+                        <label for="inputName">Name</label>
+                        <input class="form-control" type="text" id="inputName" placeholder="Name" name="customerName">
+                        <span id="feedback1"></span>
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    <label class="checkbox-inline col-lg-offset-9"><input type="checkbox" name="personalInfo" id="personalInfo" onclick="showExtraField();">Personal Information</label>
+                    <div class="form-group">
+                        <label for="inputAddress">Address</label>
+                        <input class="form-control" type="text" id="inputAddress" placeholder="Address" name="address">
+                        <span id="feedback2"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">Phone number</label>
+                        <input class="form-control" type="text" id="inputPhone" placeholder="Your contact number" name="phone">
+                        <span id="feedback3"></span>
+                    </div>
                     <div class="progress">
-                        <div class="progress-bar progress-bar-info active" role="progressbar" style="width:50%"></div>
+                        <div class="progress-bar progress-bar-info" role="progressbar" style="width:100%"></div>
                     </div>
-                </div>
-                    <hr>
-                <div class="col-lg-6 col-lg-offset-3">
-                    <hr>
-                    
-                    <h3 class="intro-text text-center">Step 2: Fill in your <strong>order</strong> 
-                    </h3>
-                    <form class="form-horizontal" name="personalInfo" id="extraField" onSubmit="return validateForm();">
-                        <div class="form-group">
-                            <label for="inputName">Name</label>
-                            <input class="form-control" type="text" id="inputName" placeholder="Name" name="customerName">
-                            <span id="feedback1"></span> 
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress">Address</label>
-                            <input class="form-control" type="text" id="inputAddress" placeholder="Address" name="address">
-                            <span id="feedback2"></span> 
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPhone">Phone number</label>
-                            <input class="form-control" type="text" id="inputPhone" placeholder="Your contact number" name="phone">
-                            <span id="feedback3"></span> 
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-info" role="progressbar" style="width:100%"></div>
-                        </div>
-                        <div class="form-group text-center">
-                            <input type="submit" value="send">
-                        </div>
-                    </form>
-                </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="send">
+                    </div>
+                </form>
             </div>
-    
-            <div class="box">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Helsinki</h4>
-                            </div>
-                            <div class="panel-body">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15878.06686467474!2d24.9307066!3d60.1681791!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bc796210691%3A0xcd4ebd843be2f763!2sHelsinki!5e0!3m2!1sen!2sfi!4v1462734904146"  height="300"  style="border:0" allowfullscreen></iframe>
-                                <div class="table-responsive>">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Weekdays</th>
-                                                <th scope="col">Saturday</th>
-                                                <th scope="col">Sunday</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>9:00-23:00</td>
-                                                <td>10:00-21:00</td>
-                                                <td>12:00-18:00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Espoo</h4>
-                            </div>
-                            <div class="panel-body">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253740.6461942961!2d24.39494136760307!3d60.20805921862873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468df2faa43d4be1%3A0xf0b890b45d33539f!2sEspoo!5e0!3m2!1sen!2sfi!4v1462734998829"   height="300" style="border:0" allowfullscreen></iframe>
-                                <div class="table-responsive>">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Weekdays</th>
-                                                <th scope="col">Saturday</th>
-                                                <th scope="col">Sunday</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>9:00-23:00</td>
-                                                <td>10:00-21:00</td>
-                                                <td>12:00-18:00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">Vantaa</h4>
-                            </div>
-                            <div class="panel-body">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126440.0924099966!2d24.829706141349895!3d60.319235640964195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469207b83a3845b5%3A0xe2b7cd7632a1804f!2sVantaa!5e0!3m2!1sen!2sfi!4v1462735043611"  height="300" style="border:0" allowfullscreen></iframe>
-                                <div class="table-responsive>">
-                                    <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Weekdays</th>
-                                                    <th scope="col">Saturday</th>
-                                                    <th scope="col">Sunday</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>9:00-23:00</td>
-                                                    <td>10:00-21:00</td>
-                                                    <td>12:00-18:00</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                        
-
-                </div>
-            </div>
-
         </div>
+
+        <div class="box">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Helsinki</h4>
+                        </div>
+                        <div class="panel-body">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15878.06686467474!2d24.9307066!3d60.1681791!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920bc796210691%3A0xcd4ebd843be2f763!2sHelsinki!5e0!3m2!1sen!2sfi!4v1462734904146"
+                                height="300" style="border:0" allowfullscreen></iframe>
+                            <div class="table-responsive>">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Weekdays</th>
+                                            <th scope="col">Saturday</th>
+                                            <th scope="col">Sunday</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>9:00-23:00</td>
+                                            <td>10:00-21:00</td>
+                                            <td>12:00-18:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Espoo</h4>
+                        </div>
+                        <div class="panel-body">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253740.6461942961!2d24.39494136760307!3d60.20805921862873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468df2faa43d4be1%3A0xf0b890b45d33539f!2sEspoo!5e0!3m2!1sen!2sfi!4v1462734998829"
+                                height="300" style="border:0" allowfullscreen></iframe>
+                            <div class="table-responsive>">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Weekdays</th>
+                                            <th scope="col">Saturday</th>
+                                            <th scope="col">Sunday</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>9:00-23:00</td>
+                                            <td>10:00-21:00</td>
+                                            <td>12:00-18:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Vantaa</h4>
+                        </div>
+                        <div class="panel-body">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126440.0924099966!2d24.829706141349895!3d60.319235640964195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469207b83a3845b5%3A0xe2b7cd7632a1804f!2sVantaa!5e0!3m2!1sen!2sfi!4v1462735043611"
+                                height="300" style="border:0" allowfullscreen></iframe>
+                            <div class="table-responsive>">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Weekdays</th>
+                                            <th scope="col">Saturday</th>
+                                            <th scope="col">Sunday</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>9:00-23:00</td>
+                                            <td>10:00-21:00</td>
+                                            <td>12:00-18:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
     </div>
-     <footer>
+    </div>
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <br>
                     <a href="https://www.facebook.com/cupcakeforher">
                         <img width="30" alt="Facebook" src="img/facebook.gif">
-                        </a>
-                        <a href="https://twitter.com/cupcakeforher">
+                    </a>
+                    <a href="https://twitter.com/cupcakeforher">
                         <img width="30" alt="Twitter" src="img/twitter.gif">
                     </a>
-                   &copy; <i id="copy-right">Happy Bakery</i> 2016
-                   <br>
-                   <br>
-                   <br>
+                    &copy;
+                    <i id="copy-right">Happy Bakery</i> 2016
+                    <br>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
     </footer>
 
-            
 
 
 
-      
+
+
 
     <script src="js/jquery.js"></script>
 
-    
-    <script src="js/bootstrap.min.js"></script>  
-   
+
+    <script src="js/bootstrap.min.js"></script>
+
     <script>
-    $('.carousel').carousel({
-        interval: 5000
-    })
+        $('.carousel').carousel({
+            interval: 5000
+        })
     </script>
 
 </body>
+
 </html>
